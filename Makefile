@@ -21,7 +21,7 @@ OBJ						=					$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 RESET					= 					\033[0m
 GREEN		 			= 					\033[38;5;46m
 
-$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.cpp $(INCLUDE)
+$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.cpp
 						$(CPP) $(CPP_FLAGS) -c $< -o $@
 
 all:					$(NAME)

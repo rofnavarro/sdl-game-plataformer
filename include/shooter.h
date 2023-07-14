@@ -5,6 +5,8 @@
 # include	<SDL2/SDL.h>
 # include	<SDL2/SDL_image.h>
 
+# include	"RenderWindow.hpp"
+
 # define	TRUE	1
 # define	FALSE	0
 

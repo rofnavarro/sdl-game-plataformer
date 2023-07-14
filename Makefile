@@ -1,28 +1,51 @@
 NAME					=					shooter
 
-INCLUDE_PATH			=					./include
-
 CPP						=					g++
-CPP_FLAGS				=					-std=c++14 -m64 -g -Wall -Werror -Wextra -I ${INCLUDE_PATH}
+CPP_FLAGS				=					-std=c++14 -m64 -g -Wall -Werror -Wextra
 
 LIB						=					-lSDL2 -lSDL2_image
 
 RM						=					rm -rf
 
-SRC						=					shooter.cpp 
+INCLUDE_DIR				=					./include
+INCLUDE_FILES			=					shooter.h
+INCLUDE					=					$(addprefix $(INCLUDE_DIR)/, $(INCLUDE_FILES))
 
-OBJ						=					$(SRC:%.cpp=%.o)
+SRC_DIR					=					./src
+SRC_FILES				=					shooter.cpp
+SRC						=					$(addprefix $(SRC_DIR)/, $(SRC_FILES))
+
+OBJ_DIR					=					./obj
+OBJ						=					$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+
+$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.cpp $(INCLUDE)
+						$(CPP) $(CPP_FLAGS) -c $< -s $@
 
 all:					$(NAME)
 
-$(NAME):				$(OBJ)
-						$(CPP) -c $(CPP_FLAGS) $(LIB) $(OBJ) -o $(NAME)
+RESET					= 	\033[0m
+GREEN		 			= 	\033[38;5;46m
+
+$(NAME):				$(OBJ_DIR) $(OBJ) $(INCLUDE)
+						$(CPP) $(CPP_FLAGS) $(OBJ) -o $(NAME)
+						@echo "$(GREEN)Executable OK!	$(RESET)"
+
+$(OBJ_DIR):
+						@mkdir -p $(OBJ_DIR)
+
+run:
+						./$(NAME)
+
+runv:					all
+						valgrind -q --leak-check=full --show-leak-kinds=all -s --track-origins=yes ./$(NAME)
 
 clean:
-						$(RM) $(OBJ)
+						@$(RM) $(OBJ_DIR)
+						@echo "$(GREEN)Object files removed $(RESET)"
 
 fclean:					clean
-						$(RM) $(NAME)
+						@$(RM) $(NAME)
+						@echo "$(GREEN)Executable removed $(RESET)"
 
 re:						fclean all
 

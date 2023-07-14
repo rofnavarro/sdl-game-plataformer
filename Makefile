@@ -18,13 +18,13 @@ SRC						=					$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ_DIR					=					./obj
 OBJ						=					$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
+RESET					= 					\033[0m
+GREEN		 			= 					\033[38;5;46m
+
 $(OBJ_DIR)/%.o:			$(SRC_DIR)/%.cpp $(INCLUDE)
-						$(CPP) $(CPP_FLAGS) -c $< -s $@
+						$(CPP) $(CPP_FLAGS) -c $< -o $@
 
 all:					$(NAME)
-
-RESET					= 	\033[0m
-GREEN		 			= 	\033[38;5;46m
 
 $(NAME):				$(OBJ_DIR) $(OBJ) $(INCLUDE)
 						$(CPP) $(CPP_FLAGS) $(OBJ) -o $(NAME)

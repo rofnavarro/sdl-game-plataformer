@@ -33,7 +33,7 @@ $(NAME):				$(OBJ_DIR) $(OBJ) $(INCLUDE)
 $(OBJ_DIR):
 						@mkdir -p $(OBJ_DIR)
 
-run:
+run:					all
 						./$(NAME)
 
 runv:					all

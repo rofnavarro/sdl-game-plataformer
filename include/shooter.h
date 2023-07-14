@@ -17,4 +17,6 @@ typedef	struct s_application
 	SDL_Renderer	*rend;
 }	t_application;
 
+int	arg_check(int argc, char **argv);
+
 #endif

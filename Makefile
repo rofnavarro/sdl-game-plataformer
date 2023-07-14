@@ -12,7 +12,7 @@ INCLUDE_FILES			=					shooter.h
 INCLUDE					=					$(addprefix $(INCLUDE_DIR)/, $(INCLUDE_FILES))
 
 SRC_DIR					=					./src
-SRC_FILES				=					shooter.cpp
+SRC_FILES				=					shooter.cpp validations.cpp
 SRC						=					$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR					=					./obj
@@ -27,7 +27,7 @@ $(OBJ_DIR)/%.o:			$(SRC_DIR)/%.cpp $(INCLUDE)
 all:					$(NAME)
 
 $(NAME):				$(OBJ_DIR) $(OBJ) $(INCLUDE)
-						$(CPP) $(CPP_FLAGS) $(OBJ) -o $(NAME)
+						$(CPP) $(CPP_FLAGS) $(OBJ) $(LIB) -o $(NAME)
 						@echo "$(GREEN)Executable OK!	$(RESET)"
 
 $(OBJ_DIR):

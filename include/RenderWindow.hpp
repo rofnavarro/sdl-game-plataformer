@@ -2,7 +2,7 @@
 
 # include	"./shooter.h"
 
-class RenderWindow
+class	RenderWindow
 {
 private:
 	SDL_Window		*window;

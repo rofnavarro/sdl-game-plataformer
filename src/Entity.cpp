@@ -1,7 +1,7 @@
 #include	"../include/shooter.h"
 
-Entity::Entity(float x, float y, SDL_Texture *texture)
-	:x(x), y(y), texture(texture)
+Entity::Entity(Vector2f position, SDL_Texture *texture)
+	:position(position), texture(texture)
 {
 	current_frame.x = 0;
 	current_frame.y = 0;
@@ -9,14 +9,9 @@ Entity::Entity(float x, float y, SDL_Texture *texture)
 	current_frame.h = 32;
 }
 
-float	Entity::get_x()
+Vector2f&	Entity::get_position()
 {
-	return (x);
-}
-
-float	Entity::get_y()
-{
-	return (y);
+	return	(position);
 }
 
 SDL_Texture	*Entity::get_texture()

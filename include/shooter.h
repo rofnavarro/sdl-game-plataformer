@@ -4,7 +4,9 @@
 # include	<iostream>
 # include	<SDL2/SDL.h>
 # include	<SDL2/SDL_image.h>
+# include	<vector>
 
+# include	"Math.hpp"
 # include	"Entity.hpp"
 # include	"RenderWindow.hpp"
 

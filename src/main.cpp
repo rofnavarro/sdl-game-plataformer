@@ -11,9 +11,15 @@ int	main(int argc, char **argv)
 	bool			game_running;
 	SDL_Event		event;
 	SDL_Texture		*grass_texture = window.LoadTexture("res/gfx/grass.png");
-	Entity			entities[3] = {Entity(0, 0, grass_texture),
-									Entity(32, 0, grass_texture),
-									Entity(32, 32, grass_texture)};
+
+	std::vector<Entity> entities = {Entity(Vector2f(0, 0), grass_texture),
+									Entity(Vector2f(30, 0), grass_texture),
+									Entity(Vector2f(30, 30), grass_texture)};
+	{
+		Entity	wilson(Vector2f(100, 50), grass_texture);
+
+		entities.push_back(wilson);
+	}
 
 	game_running = true;
 	while (game_running)
@@ -24,8 +30,10 @@ int	main(int argc, char **argv)
 				game_running = false;
 		}
 		window.Clear();
-		for (int i = 0; i < (int)SDL_arraysize(entities); i++)
-			window.Render(entities[i]);
+		for (Entity& e : entities)
+		{
+			window.Render(e);
+		}
 		window.Display();
 	}
 

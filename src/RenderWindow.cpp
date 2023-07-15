@@ -35,8 +35,8 @@ void	RenderWindow::Render(Entity& entity)
 	src.w = entity.get_current_frame().w;
 	src.h = entity.get_current_frame().h;
 	
-	dst.x = entity.get_x() * 4;
-	dst.y = entity.get_y() * 4;
+	dst.x = entity.get_position().x * 4;
+	dst.y = entity.get_position().y * 4;
 	dst.w = entity.get_current_frame().w * 4;
 	dst.h = entity.get_current_frame().h * 4;
 	SDL_RenderCopy(renderer, entity.get_texture(), &src, &dst);

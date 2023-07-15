@@ -10,7 +10,7 @@ private:
 public:
 					RenderWindow(const char *title, int width, int height);
 	SDL_Texture		*LoadTexture(const char *filepath);
-	void			Render(SDL_Texture *texture);
+	void			Render(Entity& entity);
 	void			Display();
 	void			Clear();
 	void			Destroy();

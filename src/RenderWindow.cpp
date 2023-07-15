@@ -1,4 +1,4 @@
-#include "../include/RenderWindow.hpp"
+#include	"../include/shooter.h"
 
 RenderWindow::RenderWindow(const char *title, int width, int height)
 	:window(NULL), renderer(NULL)
@@ -25,9 +25,21 @@ SDL_Texture	*RenderWindow::LoadTexture(const char *filepath)
 	return (texture);
 }
 
-void	RenderWindow::Render(SDL_Texture *texture)
+void	RenderWindow::Render(Entity& entity)
 {
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	SDL_Rect	src;
+	SDL_Rect	dst;
+
+	src.x = entity.get_current_frame().x;
+	src.y = entity.get_current_frame().y;
+	src.w = entity.get_current_frame().w;
+	src.h = entity.get_current_frame().h;
+	
+	dst.x = entity.get_x() * 4;
+	dst.y = entity.get_y() * 4;
+	dst.w = entity.get_current_frame().w * 4;
+	dst.h = entity.get_current_frame().h * 4;
+	SDL_RenderCopy(renderer, entity.get_texture(), &src, &dst);
 }
 
 void	RenderWindow::Display()

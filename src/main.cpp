@@ -1,6 +1,4 @@
-#include "../include/shooter.h"
-
-using namespace std;
+#include	"../include/shooter.h"
 
 int	main(int argc, char **argv)
 {
@@ -12,9 +10,11 @@ int	main(int argc, char **argv)
 	RenderWindow	window("GAME v0.1", SCREEN_WIDTH, SCREEN_HEIGHT);
 	bool			game_running;
 	SDL_Event		event;
-	SDL_Texture		*grass_texture;
+	SDL_Texture		*grass_texture = window.LoadTexture("res/gfx/grass.png");
+	Entity			entities[3] = {Entity(0, 0, grass_texture),
+									Entity(32, 0, grass_texture),
+									Entity(32, 32, grass_texture)};
 
-	grass_texture = window.LoadTexture("res/gfx/grass.png");
 	game_running = true;
 	while (game_running)
 	{
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 				game_running = false;
 		}
 		window.Clear();
-		window.Render(grass_texture);
+		for (int i = 0; i < (int)SDL_arraysize(entities); i++)
+			window.Render(entities[i]);
 		window.Display();
 	}
 

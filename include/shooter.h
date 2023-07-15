@@ -1,4 +1,4 @@
-#ifndef	SHOOTER_H
+#ifndef		SHOOTER_H
 # define	SHOOTER_H
 
 # include	<iostream>
@@ -7,18 +7,10 @@
 
 # include	"RenderWindow.hpp"
 
-# define	TRUE	1
-# define	FALSE	0
-
 # define	SCREEN_WIDTH	1280
 # define	SCREEN_HEIGHT	720
 
-typedef	struct s_application
-{
-	SDL_Window		*win;
-	SDL_Renderer	*rend;
-}	t_application;
-
-int	arg_check(int argc, char **argv);
+//	validations.cpp
+int		arg_check(int argc, char **argv);
 
 #endif

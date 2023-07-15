@@ -12,7 +12,7 @@ INCLUDE_FILES			=					shooter.h
 INCLUDE					=					$(addprefix $(INCLUDE_DIR)/, $(INCLUDE_FILES))
 
 SRC_DIR					=					./src
-SRC_FILES				=					shooter.cpp validations.cpp
+SRC_FILES				=					shooter.cpp validations.cpp RenderWindow.cpp
 SRC						=					$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR					=					./obj

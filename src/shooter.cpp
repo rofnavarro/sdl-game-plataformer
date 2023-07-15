@@ -9,6 +9,22 @@ int	main(int argc, char **argv)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		std::cout << "SDL_Init fail. Error: " << SDL_GetError() << std::endl;
 
-	RenderWindow("teste", SCREEN_WIDTH, SCREEN_HEIGHT);
+	RenderWindow	window("teste", SCREEN_WIDTH, SCREEN_HEIGHT);
+	bool		game_running;
+	SDL_Event	event;
+
+	game_running = true;
+	while (game_running)
+	{
+		while (SDL_PollEvent(&event))
+		{
+			if (event.type == SDL_QUIT)
+				game_running = false;
+		}
+	}
+
+	window.Destroy();
+	SDL_Quit();
+
 	return (EXIT_SUCCESS);
 }

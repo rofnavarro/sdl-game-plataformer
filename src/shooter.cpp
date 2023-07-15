@@ -9,10 +9,12 @@ int	main(int argc, char **argv)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		std::cout << "SDL_Init fail. Error: " << SDL_GetError() << std::endl;
 
-	RenderWindow	window("teste", SCREEN_WIDTH, SCREEN_HEIGHT);
-	bool		game_running;
-	SDL_Event	event;
+	RenderWindow	window("GAME v0.1", SCREEN_WIDTH, SCREEN_HEIGHT);
+	bool			game_running;
+	SDL_Event		event;
+	SDL_Texture		*grass_texture;
 
+	grass_texture = window.LoadTexture("res/gfx/grass.png");
 	game_running = true;
 	while (game_running)
 	{
@@ -21,6 +23,9 @@ int	main(int argc, char **argv)
 			if (event.type == SDL_QUIT)
 				game_running = false;
 		}
+		window.Clear();
+		window.Render(grass_texture);
+		window.Display();
 	}
 
 	window.Destroy();
